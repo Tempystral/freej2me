@@ -14,14 +14,24 @@
 	You should have received a copy of the GNU General Public License
 	along with FreeJ2ME.  If not, see http://www.gnu.org/licenses/
 */
+
+#ifndef _WIN32
+#include <unistd.h>
+#include <sys/wait.h>
+#endif
+
+#ifdef _WIN32
+#include "unistd.h"
+#include "wait.h"
+#include <Windows.h>
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
 #include <errno.h>
 #include <signal.h>
 #include <sys/types.h>
-#include <sys/wait.h>
 #include "libretro.h"
 #include <file/file_path.h>
 #include <retro_miscellaneous.h>
